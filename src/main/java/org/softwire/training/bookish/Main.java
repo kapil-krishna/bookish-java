@@ -67,5 +67,11 @@ public class Main {
             System.out.println(String.format("|%-5d|%-30s|%-5d|%-5d|",
                     book.getId(), book.getTitle(), book.getNoOfCopies(), book.getNoAvailable()));
         }
+//        for (Book book : books) {
+//            System.out.println(book.getId() + " "
+//                    + book.getTitle() + " "
+//                    + book.getNoOfCopies() + " "
+//                    + book.getNoAvailable());
+//        }
     }
 }
