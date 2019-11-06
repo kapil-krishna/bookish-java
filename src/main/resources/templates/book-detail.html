@@ -1,82 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<!--    @thymesVar id="model" type="org.softwire.training.bookish.models.page.BooksPageModel"-->
+<!--    @thymesVar id="model" type="org.softwire.training.bookish.models.page.BooksDetailModel"-->
 
     <head>
-        <title>Bookish|<td><span th:text="${book.title}"></span></td></title>
+        <title>Bookish|<td><span th:text="${model.book.title}"></span></td></title>
 
         <link rel="stylesheet" href="/styles/general.css"/>
         <link rel="stylesheet" href="/styles/navbar.css"/>
-        <link rel="stylesheet" href="/styles/books.css"/>
+        <link rel="stylesheet" href="/styles/book-detail.css"/>
     </head>
 
     <body>
 
-    <h1>BOOKS</h1>
+    <h1><td><span th:text="${model.book.title}"></span></td></h1>
 
 <!--        <div th:replace="fragments/navbar :: navbar">-->
 <!--            &lt;!&ndash; This element is replaced by the HTML in fragments/navbar.html &ndash;&gt;-->
 <!--        </div>-->
 
-        <div class="container">
-            <h2>Browse all the books in our collection below</h2>
-
-            <div class="book-list">
-                    <table style="width:800px">
-                        <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>ISBN</th>
-                            <th>Number of copies</th>
-                            <th>Number available</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-<!--                        <tr th:if="${books.empty}">-->
-<!--                            <td colspan="2"> No books available </td>-->
-<!--                        </tr>-->
-                        <tr th:each="book : ${model.books}">
-                            <td><span th:href="${book.title}">Title</span></td>
-                            <td><span th:text="${book.isbn}">ISBN</span></td>
-                            <td><span th:text="${book.noOfCopies}">Number of Copies</span></td>
-                            <td><span th:text="${book.noAvailable}">Number available</span></td>
-                            <td><a th:href="${'/books/delete-book?bookID=' + book.id}" class="delete-button">Delete</a></td>
-                            <td><a th:href="${'/books/update-book?columnName=' + ___ + bookID=' + book.id}" class="update-button">Update</a></td>
-                            </tr>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+    <form th:action="@{/books/update-book}" method="post">
+        <fieldset>
+            <legend>Book details:</legend>
+            Title:<br>
+            <input type="text" name="title" th:value="${model.book.title}">
             <br>
             <br>
+            ISBN:<br>
+            <input type="text" name="isbn" th:value="${model.book.isbn}">
             <br>
-            <div class="add-a-book">
-            <h2>Add a book to the collection:</h2>
-                <form th:action="@{/books/add-book}" method="post">
-                    <div class="add-book-row">
-                        <label for ="title">Title</label>
-                        <input id="title" type="text" name="title">
-                    </div>
-                    <div class="add-book-row">
-                        <label for ="isbn">ISBN</label>
-                        <input id="isbn" type="text" name="isbn">
-                    </div>
-                    <div class="add-book-row">
-                        <label for="noOfCopies">Number of copies</label>
-                        <input id="noOfCopies" type="text" name="noOfCopies">
-                    </div>
-                    <div class="add-book-row">
-                        <label for ="noAvailable">Number available</label>
-                        <input id="noAvailable" type="text" name="noAvailable">
-                    </div>
-                    <div class="add-book-row">
-                        <span><!-- spacer --></span>
-                        <input type="submit" value="Add book" />
-                    </div>
-                </form>
-            </div>
-        </div>
+            <br>
+            Number of copies:<br>
+            <input type="text" name="noOfCopies" th:value="${model.book.noOfCopies}">
+            <br>
+            <br>
+            Number available:<br>
+            <input type="text" name="noAvailable" th:value="${model.book.noAvailable}">
+            <br>
+            <br>
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+    <br>
+    <td><a th:href="${'/books/delete-book?bookID=' + model.book.id}" class="delete-button">Delete</a></td>
 
     </body>
 

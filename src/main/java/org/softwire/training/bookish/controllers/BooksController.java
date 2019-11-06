@@ -3,12 +3,14 @@ package org.softwire.training.bookish.controllers;
 import org.softwire.training.bookish.models.database.Book;
 import org.softwire.training.bookish.models.database.Technology;
 import org.softwire.training.bookish.models.page.AboutPageModel;
+import org.softwire.training.bookish.models.page.BooksDetailModel;
 import org.softwire.training.bookish.models.page.BooksPageModel;
 import org.softwire.training.bookish.services.BooksService;
 import org.softwire.training.bookish.services.TechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -55,11 +57,23 @@ public class BooksController {
         return new RedirectView("/books");
     }
 
-    @RequestMapping("/update-book")
-    RedirectView updateBook(@RequestParam String columnName, String newValue, int bookID) {
+    @RequestMapping("/book-detail/{id}")
+    ModelAndView displayBook(@PathVariable("id") int bookID) {
 
-        booksService.updateBook(columnName, newValue, bookID);
+        Book book = booksService.getBook(bookID);
+
+        BooksDetailModel booksDetailModel = new BooksDetailModel();
+        booksDetailModel.setBook(book);
+
+        return new ModelAndView("/book-detail", "model", booksDetailModel);
+    }
+
+    @RequestMapping("/update-book")
+    RedirectView updateBook(@ModelAttribute Book book) {
+
+        booksService.updateBook(book);
 
         return new RedirectView("/books");
     }
+
 }

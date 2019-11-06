@@ -16,6 +16,15 @@ public class BooksService extends DatabaseService {
         );
     }
 
+    public Book getBook(int bookID) {
+        return jdbi.withHandle(handle ->
+                handle.createQuery("SELECT * FROM book WHERE id = :id")
+                .bind("id", bookID)
+                .mapToBean(Book.class)
+                .findOnly()
+        );
+    }
+
     public void addBook(Book book) {
         jdbi.useHandle(handle ->
                 handle.createUpdate("INSERT INTO book (id, title, isbn, noOfCopies, noAvailable) " +
@@ -29,12 +38,16 @@ public class BooksService extends DatabaseService {
         );
     }
 
-    //TODO finish code to updated individual book properties
-    public void updateBook(String columnName, String newValue, int bookID) {
-        jdbi.withHandle(handle ->
-                handle.createUpdate("UPDATE book SET " + columnName +  "= " + newValue + " WHERE id= :id")
-                .bind("id", bookID)
-                .execute()
+    public void updateBook(Book book ) {
+        jdbi.useHandle(handle ->
+                handle.createUpdate("UPDATE book SET title=:title, isbn=:isbn, " +
+                        "noOfCopies=:noOfCopies, noAvailable=:noAvailable WHERE id=:id")
+                        .bind("id", book.getId())
+                        .bind("title", book.getTitle())
+                        .bind("isbn", book.getIsbn())
+                        .bind("noOfCopies", book.getNoOfCopies())
+                        .bind("noAvailable", book.getNoAvailable())
+                        .execute()
         );
     }
 

@@ -30,6 +30,7 @@
                             <th>ISBN</th>
                             <th>Number of copies</th>
                             <th>Number available</th>
+                            <th>More info</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -37,12 +38,13 @@
 <!--                            <td colspan="2"> No books available </td>-->
 <!--                        </tr>-->
                         <tr th:each="book : ${model.books}">
-                            <td><span th:href="${'/books/book-detail?bookID=' + book.id}">Title</span></td>
-                            <td><span th:href="${book.isbn}">ISBN</span></td>
-                            <td><span th:text="${book.noOfCopies}">Number of Copies</span></td>
+                            <td><span th:text="${book.title}">Title</a></span></td>
+<!--                            Hyperlink for clicking on book-->
+                            <td><span th:text="${book.isbn}">ISBN</span></td>
+                            <td><span th:text="${book.noOfCopies}">Number of copies</span></td>
                             <td><span th:text="${book.noAvailable}">Number available</span></td>
-                            <td><a th:href="${'/books/delete-book?bookID=' + book.id}" class="delete-button">Delete</a></td>
-                            <td><a th:href="${'/books/update-book?columnName=' + ___ + bookID=' + book.id}" class="update-button">Update</a></td>
+                            <td><a th:href="${'/books/book-detail/' + book.id}" class="more-info-button">More info</a></td>
+
                             </tr>
                         </tr>
                         </tbody>
@@ -58,18 +60,22 @@
                         <label for ="title">Title</label>
                         <input id="title" type="text" name="title">
                     </div>
+                    <br>
                     <div class="add-book-row">
                         <label for ="isbn">ISBN</label>
                         <input id="isbn" type="text" name="isbn">
                     </div>
+                    <br>
                     <div class="add-book-row">
                         <label for="noOfCopies">Number of copies</label>
                         <input id="noOfCopies" type="text" name="noOfCopies">
                     </div>
+                    <br>
                     <div class="add-book-row">
                         <label for ="noAvailable">Number available</label>
                         <input id="noAvailable" type="text" name="noAvailable">
                     </div>
+                    <br>
                     <div class="add-book-row">
                         <span><!-- spacer --></span>
                         <input type="submit" value="Add book" />
