@@ -4,7 +4,7 @@
 <!--    @thymesVar id="model" type="org.softwire.training.bookish.models.page.BooksPageModel"-->
 
     <head>
-        <title>Bookish|Books</title>
+        <title>Bookish|<td><span th:text="${book.title}"></span></td></title>
 
         <link rel="stylesheet" href="/styles/general.css"/>
         <link rel="stylesheet" href="/styles/navbar.css"/>
@@ -37,8 +37,8 @@
 <!--                            <td colspan="2"> No books available </td>-->
 <!--                        </tr>-->
                         <tr th:each="book : ${model.books}">
-                            <td><span th:href="${'/books/book-detail?bookID=' + book.id}">Title</span></td>
-                            <td><span th:href="${book.isbn}">ISBN</span></td>
+                            <td><span th:href="${book.title}">Title</span></td>
+                            <td><span th:text="${book.isbn}">ISBN</span></td>
                             <td><span th:text="${book.noOfCopies}">Number of Copies</span></td>
                             <td><span th:text="${book.noAvailable}">Number available</span></td>
                             <td><a th:href="${'/books/delete-book?bookID=' + book.id}" class="delete-button">Delete</a></td>

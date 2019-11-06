@@ -1,7 +1,10 @@
 package org.softwire.training.bookish.controllers;
 
+import org.softwire.training.bookish.models.database.Book;
 import org.softwire.training.bookish.models.database.Technology;
 import org.softwire.training.bookish.models.page.AboutPageModel;
+import org.softwire.training.bookish.models.page.BooksPageModel;
+import org.softwire.training.bookish.services.BooksService;
 import org.softwire.training.bookish.services.TechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,40 +17,49 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.util.List;
 
 @Controller
-@RequestMapping("/about")
-public class AboutUsController {
+@RequestMapping("/books")
+public class BooksController {
 
-    private final TechnologyService technologyService;
+    private final BooksService booksService;
 
     @Autowired
-    public AboutUsController(TechnologyService technologyService) {
-        this.technologyService = technologyService;
+    public BooksController(BooksService booksService) {
+        this.booksService = booksService;
     }
 
     @RequestMapping("")
-    ModelAndView aboutUs() {
+    ModelAndView books() {
 
-        List<Technology> allTechnologies = technologyService.getAllTechnologies();
+        List<Book> books = booksService.getAllBooks();
 
-        AboutPageModel aboutPageModel = new AboutPageModel();
-        aboutPageModel.setTechnologies(allTechnologies);
+        BooksPageModel booksPageModel = new BooksPageModel();
+        booksPageModel.setBooks(books);
 
-        return new ModelAndView("about", "model", aboutPageModel);
+
+        return new ModelAndView("books", "model", booksPageModel);
     }
 
-    @RequestMapping("/add-technology")
-    RedirectView addTechnology(@ModelAttribute Technology technology) {
+    @RequestMapping("/add-book")
+    RedirectView addBook(@ModelAttribute Book book) {
 
-        technologyService.addTechnology(technology);
+        booksService.addBook(book);
 
-        return new RedirectView("/about");
+        return new RedirectView("/books");
     }
 
-    @RequestMapping("/delete-technology")
-    RedirectView deleteTechnology(@RequestParam int technologyId) {
+    @RequestMapping("/delete-book")
+    RedirectView deleteBook(@RequestParam int bookID) {
 
-        technologyService.deleteTechnology(technologyId);
+        booksService.deleteBook(bookID);
 
-        return new RedirectView("/about");
+        return new RedirectView("/books");
+    }
+
+    @RequestMapping("/update-book")
+    RedirectView updateBook(@RequestParam String columnName, String newValue, int bookID) {
+
+        booksService.updateBook(columnName, newValue, bookID);
+
+        return new RedirectView("/books");
     }
 }

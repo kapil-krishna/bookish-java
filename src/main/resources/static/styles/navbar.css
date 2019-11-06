@@ -1,20 +1,20 @@
 nav {
-    width: 100%;
+    height:100%;
+    width: 15%;
     flex-shrink: 0;
 
     display: flex;
-    flex-direction: row;
-    align-items: baseline;
-
-    background-color: #343a40;
+    flex-direction: column;
+    background-color: lightgreen;
     padding: 15px 0;
 }
 
 .navbar-title {
     margin: 0 5px 0 20px;
     font-family: "Segoe UI", sans-serif;
-    font-size: 30px;
-    color: lightgray;
+    font-size: 20px;
+    color: gray;
+    line-height: 40px;
 }
 .navbar-title:hover {
     color: white;
@@ -25,12 +25,12 @@ nav {
     text-decoration: none;
 }
 
-
 .navbar-item {
     margin-left: 20px;
     font-family: "Segoe UI", sans-serif;
     font-size: 20px;
-    color: grey;
+    color: gray;
+    line-height: 40px;
 }
 .navbar-item:hover {
     color: lightgray;

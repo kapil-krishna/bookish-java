@@ -10,6 +10,7 @@ public class AboutPageModel {
     public List<Technology> getTechnologies() {
         return technologies;
     }
+
     public void setTechnologies(List<Technology> technologies) {
         this.technologies = technologies;
     }
