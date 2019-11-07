@@ -20,30 +20,87 @@
 <!--        </div>-->
 
     <form th:action="@{/books/update-book}" method="post">
-        <fieldset>
+        <fieldset class="book-details">
             <legend>Book details:</legend>
             Title:<br>
+            <input type="hidden" name="id" th:value="${model.book.id}">
             <input type="text" name="title" th:value="${model.book.title}">
+            <br>
+            <br>
+            Author:<br>
+            <input type="text" name="author" th:value="${model.book.author}">
             <br>
             <br>
             ISBN:<br>
             <input type="text" name="isbn" th:value="${model.book.isbn}">
             <br>
             <br>
-            Number of copies:<br>
-            <input type="text" name="noOfCopies" th:value="${model.book.noOfCopies}">
-            <br>
-            <br>
-            Number available:<br>
-            <input type="text" name="noAvailable" th:value="${model.book.noAvailable}">
-            <br>
-            <br>
             <input type="submit" value="Submit">
         </fieldset>
     </form>
-    <br>
-    <td><a th:href="${'/books/delete-book?bookID=' + model.book.id}" class="delete-button">Delete</a></td>
 
+
+<!--    <form th:action="@{'/book-detail/' + book.id '/change-copy'}" method="post">-->
+<!--        <fieldset class="book-copies">-->
+<!--            <legend>Book details:</legend>-->
+<!--            Title:<br>-->
+<!--            <input type="hidden" name="id" th:value="${model.book.id}">-->
+<!--            <input type="text" name="title" th:value="${model.book.title}">-->
+<!--            <br>-->
+<!--            <br>-->
+<!--            Author:<br>-->
+<!--            <input type="text" name="author" th:value="${model.book.author}">-->
+<!--            <br>-->
+<!--            <br>-->
+<!--            ISBN:<br>-->
+<!--            <input type="text" name="isbn" th:value="${model.book.isbn}">-->
+<!--            <br>-->
+<!--            <br>-->
+<!--            <input type="submit" value="Submit">-->
+<!--        </fieldset>-->
+<!--    </form>-->
+
+
+    <table style="width:800px">
+        <thead>
+        <tr>
+            <th>Copy #</th>
+            <th>Status</th>
+            <th>Change status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bookCopy : ${model.listOfCopies}">
+            <td><span th:text="${bookCopy.copyId}">Copy #</span></td>
+            <td><span th:text="${bookCopy.status}">Status</span></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <td><a th:href="${'/books/delete-book?bookID=' + model.book.id}" class="delete-button">DELETE BOOK</a></td>
+
+    <div class="add-a-copy">
+        <h2>Add a new copy:</h2>
+        <form th:action="${'/books/book-detail/' + model.book.id + '/add-copy'}" method="post">
+            <div class="add-book-copy-row">
+                <label for ="copyId">Copy #</label>
+                <input id="copyId" type="text" name="copyId">
+            </div>
+            <br>
+            <div class="add-book-copy-row">
+                <label for ="status">Status</label>
+                <input id="status" type="text" name="status">
+            </div>
+            <br>
+            <div class="add-book-row">
+                <span><!-- spacer --></span>
+                <input type="submit" value="Add copy" />
+            </div>
+        </form>
+    </div>
     </body>
 
 

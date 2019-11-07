@@ -1,31 +1,13 @@
 package org.softwire.training.bookish.models.database;
 
 public class Book {
+
     private Integer id;
     private String title;
+    private String author;
     private String isbn;
-    private Integer noOfCopies;
-    private Integer noAvailable;
+    private String coverURL;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getIsbn() { return isbn; }
-
-    public void setIsbn(String isbn) { this.isbn = isbn; }
-
-    public Integer getNoOfCopies() {
-        return noOfCopies;
-    }
-
-    public void setNoOfCopies(Integer noOfCopies) {
-        this.noOfCopies = noOfCopies;
-    }
 
     public Integer getId() {
         return id;
@@ -35,13 +17,25 @@ public class Book {
         this.id = id;
     }
 
-    public Integer getNoAvailable() {
-        return noAvailable;
+    public String getTitle() {
+        return title;
     }
 
-    public void setNoAvailable(Integer noAvailable) {
-        this.noAvailable = noAvailable;
+    public void setTitle(String title) {
+        this.title = title;
     }
+
+    public String getAuthor() { return author; }
+
+    public void setAuthor(String author) { this.author = author; }
+
+    public String getIsbn() { return isbn; }
+
+    public void setIsbn(String isbn) { this.isbn = isbn; }
+
+    public String getCoverURL() { return coverURL; }
+
+    public void setCoverURL(String coverURL) { this.coverURL = coverURL; }
 }
 
 

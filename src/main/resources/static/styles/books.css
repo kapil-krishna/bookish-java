@@ -5,6 +5,12 @@ h2 {
     font-size: 24px;
 }
 
+.bookImage {
+    max-width: 100%;
+    max-height: 120px;
+}
+
+
 
 .technology-list {
     width: 100%;
@@ -27,9 +33,9 @@ h2 {
 }
 
 .technology img {
-    max-width: 100%;
-    max-height: 150px;
-}
+     max-width: 100%;
+     max-height: 150px;
+ }
 
 
 .delete-button {

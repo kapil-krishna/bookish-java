@@ -1,6 +1,7 @@
 package org.softwire.training.bookish.controllers;
 
 import org.softwire.training.bookish.models.database.Book;
+import org.softwire.training.bookish.models.database.BookCopy;
 import org.softwire.training.bookish.models.database.Technology;
 import org.softwire.training.bookish.models.page.AboutPageModel;
 import org.softwire.training.bookish.models.page.BooksDetailModel;
@@ -61,9 +62,11 @@ public class BooksController {
     ModelAndView displayBook(@PathVariable("id") int bookID) {
 
         Book book = booksService.getBook(bookID);
+        List<BookCopy> listOfCopies = booksService.getAllCopies(bookID);
 
         BooksDetailModel booksDetailModel = new BooksDetailModel();
         booksDetailModel.setBook(book);
+        booksDetailModel.setListOfCopies(listOfCopies);
 
         return new ModelAndView("/book-detail", "model", booksDetailModel);
     }
@@ -74,6 +77,22 @@ public class BooksController {
         booksService.updateBook(book);
 
         return new RedirectView("/books");
+    }
+
+    @RequestMapping("/book-detail/{id}/add-copy")
+    RedirectView addBookCopy(@PathVariable("id") int bookId, @ModelAttribute BookCopy bookCopy) {
+
+        booksService.addNewCopy(bookId, bookCopy);
+
+        return new RedirectView("/books/book-detail/" + bookId);
+    }
+
+    @RequestMapping("/book-detail/{id}/change-copy")
+    RedirectView changeBookCopy(@PathVariable("id") int bookId, @ModelAttribute BookCopy bookCopy) {
+
+        booksService.changeBookStatus(bookCopy);
+
+        return new RedirectView("/books/book-detail/" + bookId);
     }
 
 }
