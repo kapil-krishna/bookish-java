@@ -4,6 +4,7 @@
 <!--    @thymesVar id="model" type="org.softwire.training.bookish.models.page.AboutPageModel"-->
 
     <head>
+        <link href="https://fonts.googleapis.com/css?family=McLaren|Poppins&display=swap" rel="stylesheet">
         <title>Bookish|About Us</title>
 
         <link rel="stylesheet" href="/styles/general.css"/>
@@ -13,11 +14,13 @@
 
     <body>
 
+    <div th:replace="fragments/navbar :: navbar">
+        <!-- This element is replaced by the HTML in fragments/navbar.html -->
+    </div>
+
+
     <h1>ABOUT</h1>
 
-<!--        <div th:replace="fragments/navbar :: navbar">-->
-<!--            &lt;!&ndash; This element is replaced by the HTML in fragments/navbar.html &ndash;&gt;-->
-<!--        </div>-->
 
         <div class="container">
             <h2>This app was made using:</h2>

@@ -1,3 +1,13 @@
+h1 {
+    margin: 40px;
+    font-family: 'McLaren', cursive;
+    font-weight: bold;
+    font-size: 80px;
+    color: black;
+    line-height: 100%;
+    text-align: center;
+}
+
 
 h2 {
     font-family: "Segoe UI", sans-serif;
@@ -73,3 +83,33 @@ h2 {
     border-radius: 15px;
     padding: 5px 15px;
 }
+
+.book-details {
+    width:800px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.book-details input {
+    width:40%;
+}
+
+.book-details img {
+    width:50%;
+    }
+
+table {
+    width:100%;
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 22px;
+}
+
+table th {
+    text-align:left;
+    font-weight: bold;
+    }
+
+table td {
+    font-weight:normal;

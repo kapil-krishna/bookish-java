@@ -4,6 +4,7 @@
 <!--    @thymesVar id="model" type="org.softwire.training.bookish.models.page.BooksPageModel"-->
 
     <head>
+        <link href="https://fonts.googleapis.com/css?family=McLaren|Poppins&display=swap" rel="stylesheet">
         <title>Bookish|Books</title>
 
         <link rel="stylesheet" href="/styles/general.css"/>
@@ -13,6 +14,10 @@
 
     <body>
 
+    <div th:replace="fragments/navbar :: navbar">
+        <!-- This element is replaced by the HTML in fragments/navbar.html -->
+    </div>
+
     <h1>BOOKS</h1>
 
 <!--        <div th:replace="fragments/navbar :: navbar">-->
@@ -21,9 +26,10 @@
 
         <div class="container">
             <h2>Browse all the books in our collection below</h2>
-
+            <br>
+            <br>
             <div class="book-list">
-                    <table style="width:800px">
+                    <table style="width:100%">
                         <thead>
                         <tr>
                             <th>Cover</th>

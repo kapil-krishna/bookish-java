@@ -1,43 +1,43 @@
 nav {
-    height:100%;
-    width: 15%;
+    height:20px%;
+    width: 100%;
     flex-shrink: 0;
 
     display: flex;
-    flex-direction: column;
-    background-color: lightgreen;
+    flex-direction: row;
+    background-color: black;
     padding: 15px 0;
 }
 
 .navbar-title {
-    margin: 0 5px 0 20px;
-    font-family: "Segoe UI", sans-serif;
-    font-size: 20px;
-    color: gray;
+    margin: 0 5px 0 30px;
+    font-family: 'McLaren', cursive;
+    font-size: 22px;
     line-height: 40px;
 }
-.navbar-title:hover {
+
+.navbar-title a:hover {
     color: white;
 }
 
 .navbar-title a {
-    color: unset;
+    color: #008080;
     text-decoration: none;
 }
 
 .navbar-item {
-    margin-left: 20px;
-    font-family: "Segoe UI", sans-serif;
-    font-size: 20px;
-    color: gray;
+    margin-left: 60px;
+    font-family: 'McLaren', cursive;
+    font-size: 22px;
     line-height: 40px;
-}
-.navbar-item:hover {
-    color: lightgray;
 }
 
 .navbar-item a {
-    color: unset;
+    color: #008080;
     text-decoration: none;
+}
+
+.navbar-item a:hover {
+    color: white;
 }
 

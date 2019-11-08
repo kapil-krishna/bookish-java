@@ -1,3 +1,12 @@
+h1 {
+      margin: 40px;
+      font-family: 'McLaren', cursive;
+      font-weight: bold;
+      font-size: 80px;
+      color: black;
+      line-height: 100%;
+      text-align: center;
+}
 
 h2 {
     font-family: "Segoe UI", sans-serif;
